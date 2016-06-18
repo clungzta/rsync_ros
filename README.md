@@ -17,13 +17,15 @@ To use this script your system needs to have ROS, rsync, ssh and python installe
 ##Rsync Action Definition
 ```
 #Goal
-string[] rsync_args #List of Rsync command line arguments e.g. ['-avzh', '--partial'], see http://linux.die.net/man/1/rsync
+string[] rsync_args #List of Rsync command line arguments e.g. ['-avzh', '--partial']
+                    #see http://linux.die.net/man/1/rsync
+                    
 string source_path #e.g. "/home/user/folder_to_sync", "/home/user/file_to_sync.txt"
 string destination_path #e.g. "remote_username@192.168.0.1:/home/user/folder_to_sync", "/home/user/file_to_sync.txt"
 
 ---
 #Result
-bool sync_success #returns True if the file(s)/[folder(s) synced correctly
+bool sync_success #returns True if the file(s)/folder(s) synced correctly
 
 ---
 #Feedback
