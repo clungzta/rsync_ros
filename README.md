@@ -1,7 +1,8 @@
 #rsync_ros
+##Description
 A ROS [actionlib](http://wiki.ros.org/actionlib) server for [Rsync](https://en.wikipedia.org/wiki/Rsync).
 
-Copy or Sync a file (or folder) from one location to another. 
+Copy or Sync files and/or folders from one location to another. 
 The location can be either on the local machine or a remote machine through ssh.
 
 A Rsync python subprocess is called from a ROS action goal.
@@ -9,7 +10,11 @@ A Rsync python subprocess is called from a ROS action goal.
 
 Supports the full list of Rsync command line arguments, http://linux.die.net/man/1/rsync
 
-## H2 Rsync Action Definition
+##Requirements
+
+To use this script your system needs to have ROS, rsync, ssh and python installed.
+
+##Rsync Action Definition
 ```
 #Goal
 string[] rsync_args #List of Rsync command line arguments e.g. ['-avzh', '--partial'], see http://linux.die.net/man/1/rsync
@@ -23,3 +28,4 @@ bool sync_success #returns True if the file(s)/[folder(s) synced correctly
 ---
 #Feedback
 float32 percent_complete
+```
