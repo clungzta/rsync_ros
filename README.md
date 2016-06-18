@@ -8,13 +8,13 @@ rsync_node.py allows a user to call Rsync through the ROS action protocol. It re
 
 The server passes all arguments listed in rsync_args to Rsync. See the available arguments [here](http://linux.die.net/man/1/rsync).
 
-##Requirements
+##Dependencies
 
-####Actionlib/Rsync Server
-ROS, Rsync, actionlib, ssh and python must be installed.
+####On Actionlib/Rsync Server
+Rsync, actionlib, ssh, rospy
 
 ####Rsync client machine
-ssh and Rsync must be installed
+ssh and Rsync
 
 ##Rsync Action Definition
 ```
