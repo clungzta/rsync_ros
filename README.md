@@ -12,10 +12,10 @@ Accepts list of Rsync command line arguments. See the available arguments [here]
 
 ##Requirements
 
-###Server
+####Actionlib/Rsync Server
 ROS, Rsync, actionlib, ssh and python must be installed.
 
-###Rsync client machine
+####Rsync client machine
 ssh and Rsync must be installed
 
 ##Rsync Action Definition
