@@ -8,10 +8,7 @@ rsync_node.py allows a user to call Rsync through the ROS action protocol. It re
 
 [Rsync](https://en.wikipedia.org/wiki/Rsync) is called through a python subprocess.
 
-Passes through Rsync command line arguments, entered in a list form to rsync_args. See the available arguments [here](http://linux.die.net/man/1/rsync).
-
-##Use Cases
-Automated file transfers (logfiles, rosbags, image files) between robot(s) and other machines.
+Accepts list of Rsync command line arguments. See the available arguments [here](http://linux.die.net/man/1/rsync).
 
 ##Requirements
 
@@ -27,8 +24,8 @@ ssh and Rsync must be installed
 string[] rsync_args #List of Rsync command line arguments e.g. ['-avzh', '--partial']
                     #see http://linux.die.net/man/1/rsync
                     
-string source_path #e.g. "/home/user/folder_to_sync", "/home/user/file_to_sync.txt"
-string destination_path #e.g. "remote_user@192.168.0.1:/home/user/folder_destination", "/home/user/file_destination.txt"
+string source_path #e.g. "/home/user/file_to_sync.txt"
+string destination_path #e.g. "ssh_username@192.168.0.1:/home/user/file_destination.txt"
 
 ---
 #Result
