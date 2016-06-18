@@ -88,23 +88,6 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-## Declare a cpp library
-# add_library(image_to_file
-#   src/${PROJECT_NAME}/image_to_file.cpp
-# )
-
-## Declare a cpp executable
-# add_executable(image_to_file_node src/image_to_file_node.cpp)
-
-## Add cmake target dependencies of the executable/library
-## as an example, message headers may need to be generated before nodes
-#add_dependencies(image_to_file_node image_to_file_generate_messages_cpp)
-
-## Specify libraries to link a library or executable target against
-#target_link_libraries(image_to_file_node
-#   ${catkin_LIBRARIES}
-#)
-
 #############
 ## Install ##
 #############
@@ -144,15 +127,8 @@ include_directories(
 ## Testing ##
 #############
 
-## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_image_to_file.cpp)
-# if(TARGET ${PROJECT_NAME}-test)
-#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
-# endif()
-
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-
 ############################
-catkin_install_python(PROGRAMS src/rsync_node.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+catkin_install_python(PROGRAMS src/server_node.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
