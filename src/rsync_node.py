@@ -4,7 +4,6 @@ import rospy
 roslib.load_manifest('rsync_actionlib')
 from subprocess import Popen, PIPE
 import actionlib
-import sys
 from rsync_ros.msg import RsyncAction, RsyncResult
 
 class RsyncServer:
