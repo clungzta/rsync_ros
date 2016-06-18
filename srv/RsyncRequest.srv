@@ -1,5 +1,0 @@
-string[] args
-string source_path
-string destination_path
----
-bool success
