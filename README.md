@@ -2,7 +2,7 @@
 ##Description
 A ROS [actionlib](http://wiki.ros.org/actionlib) server for [Rsync](https://en.wikipedia.org/wiki/Rsync).
 
-Copy or Sync files and/or folders from one location to another. 
+Copy or Sync files and/or folders from one location to another using an actionlib command. 
 The location can be either on the local machine or a remote machine through ssh.
 
 A Rsync python subprocess is called from a ROS action goal.
