@@ -13,7 +13,7 @@ The server passes all arguments listed in rsync_args to Rsync. See the available
 ####On Actionlib/Rsync Server
 Rsync, actionlib, ssh, rospy
 
-####Rsync client machine
+####On Rsync client machine
 ssh and Rsync
 
 ##Rsync Action Definition
