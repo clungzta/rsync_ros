@@ -9,10 +9,10 @@ server_node.py is an ActionServer. The ActionServer node calls Rsync through [su
 The server passes all arguments listed in rsync_args to Rsync. See the available arguments [here](http://linux.die.net/man/1/rsync).
 
 ##Requrements
-*Rsync version 3.1.0+ (Developed and tested with this version, other versions are not currently supported due to the lack of the `--outbuf` flag.)
-*ssh is required if you are transfering to and/or from remote machine(s)
-*Actionlib
-*ROS
+* Rsync version 3.1.0+ (Developed and tested with this version, other versions are not currently supported due to the lack of the `--outbuf` flag.)
+* ssh is required if you are transfering to and/or from remote machine(s)
+* actionlib
+* ROS
 
 ##Rsync Action Definition
 ```
