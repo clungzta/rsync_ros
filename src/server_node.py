@@ -38,15 +38,20 @@ class Rsync():
         self.stderr_block = '\n'.join(self.p.stderr)
 
         self.p.poll()
-        return self.p.returncode > -1
+
+        if self.p.returncode > -1:
+            #Set feedback to 100% complete, for cases when no progress is piped from Rsync stdout
+            self.progress_update_callback(100.0)
+            return True
+        else:
+            return False
 
     '''
     def calculate_total_files(self):
-        #Dry Run, Calculates the Total Number of files to be transfered, not syncing        
-        p = Popen(['rsync', '-az', '--stats', '--dry-run', self.source, self.dest], stdin=PIPE,  stdout=PIPE)
-        self.total_files = int(re.findall(r'Number of files: (\d+)', p.communicate()[0])[0])
-
-        return self.total_files
+    #Dry Run, Calculates the Total Number of files to be transfered, not syncing        
+    p = Popen(['rsync', '-az', '--stats', '--dry-run', self.source, self.dest], stdin=PIPE,  stdout=PIPE)
+    self.total_files = int(re.findall(r'Number of files: (\d+)', p.communicate()[0])[0])
+    return self.total_files
     '''
 
     def _update_progress(self, stdout_line):
@@ -70,8 +75,16 @@ class RsyncActionServer:
         rospy.loginfo("Ready to sync files.")
 
     def progress_update_cb(self, percent_complete):
-        rospy.loginfo('Total transfer percentage: {}'.format(percent_complete))
+        #This is run everytime the progress is published to stdout
+        #rospy.loginfo('Total transfer percentage: {}'.format(percent_complete))
         self.feedback.percent_complete = percent_complete
+        self.server.publish_feedback(self.feedback)
+
+        # check if preempt (cancel action) has been requested by the client
+        if self.server.is_preempt_requested():
+            rospy.loginfo('%s: Preempted' % self._action_name)
+            self.rsync = None #Delete the instance of the Rsync class
+            self.server.set_preempted() #TO-DO, fix logic error changing states upon preempt request
 
     def execute(self, goal):
         self.result = RsyncResult()
@@ -81,11 +94,13 @@ class RsyncActionServer:
 
         self.result.sync_success = self.rsync.sync()
 
-        if self.rsync.stderr_block:
-            rospy.logerr('\n{}'.format(self.rsync.stderr_block))
+        if not self.server.is_preempt_requested():
 
-        rospy.loginfo("Rsync command result '%s'", self.result.sync_success)
-        self.server.set_succeeded(self.result)
+            if self.rsync.stderr_block:
+                rospy.logerr('\n{}'.format(self.rsync.stderr_block))
+
+            rospy.loginfo("Rsync command result '%s'", self.result.sync_success)
+            self.server.set_succeeded(self.result)
 
 if __name__ == "__main__":
     try:
