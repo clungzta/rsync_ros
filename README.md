@@ -1,10 +1,8 @@
 #rsync_ros
-##Description
-A ROS [actionlib](http://wiki.ros.org/actionlib) server for [Rsync](https://en.wikipedia.org/wiki/Rsync).
-
+##Overview
 [Rsync](http://linux.die.net/man/1/rsync) is a utllity for file syncronisation and file transfer between multuple locations. Rsync is typically used to synchronize files and directories between two different systems over SSH, connecting as a user to a remote-host. See [https://en.wikipedia.org/wiki/Rsync](https://en.wikipedia.org/wiki/Rsync) for information.
 
-This package brings Rsync functionallity to the ROS. With the intent of bringing file transfer (move, copy) and syncronisation operations in the form of an actionlib API. This API makes it convenient to transfer a file (e.g. a logfile or bagfile) from one machine to another.
+This package brings Rsync functionallity to the ROS. With the intent of bringing file transfer (move, copy) and syncronisation operations in the form of an [actionlib](http://wiki.ros.org/actionlib) API. This API makes it convenient to transfer a file (e.g. a logfile or bagfile) from one machine to another.
 
 ##Potential Use Cases
 An rsync action goal may be sent when a robot has reached a certain state (e.g. using [smach](http://wiki.ros.org/smach)) or when a sensor threshold is reached. A a file (e.g. a logfile or bagfile) containg data recorded prior to the event could be then tranfered to a fileserver for storage.
