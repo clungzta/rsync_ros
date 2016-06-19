@@ -4,8 +4,7 @@ A ROS [actionlib](http://wiki.ros.org/actionlib) server for [Rsync](https://en.w
 
 [Rsync](https://en.wikipedia.org/wiki/Rsync) is the de-facto standard on unix-like systems for syncing files and folders from one location to another (either the local machine or a remote machine through ssh).
 
-rsync_node.py allows a user to call Rsync through the ROS action protocol.
-The node calls Rsync through a subprocess call. It returns a flag result upon completion of the transfer.
+server_node.py is an ActionServer. The ActionServer node calls Rsync through [subprocess Popen](https://docs.python.org/2/library/subprocess.html#popen-constructor) when it recives a ROS action goal. The ActionServer returns a flag result upon completion of the transfer.
 
 The server passes all arguments listed in rsync_args to Rsync. See the available arguments [here](http://linux.die.net/man/1/rsync).
 
