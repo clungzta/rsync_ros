@@ -8,3 +8,4 @@ bool sync_success #returns True if the file(s)/[folder(s) synced correctly
 ---
 #Feedback
 float32 percent_complete
+int64 transfer_rate #in bytes/second
