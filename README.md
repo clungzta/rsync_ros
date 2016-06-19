@@ -20,7 +20,7 @@ string destination_path #e.g. "ssh_username@192.168.0.1:/home/user/file_destinat
 
 ---
 #Result
-bool sync_success #returns True if the file(s)/folder(s) synced correctly
+bool sync_success #returns true if the file(s) synced correctly
 
 ---
 #Feedback
