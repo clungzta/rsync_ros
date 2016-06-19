@@ -9,14 +9,6 @@ The node calls Rsync through a subprocess call. It returns a flag result upon co
 
 The server passes all arguments listed in rsync_args to Rsync. See the available arguments [here](http://linux.die.net/man/1/rsync).
 
-##Dependencies
-
-#####On Actionlib/Rsync Server
-Rsync, actionlib, ssh, rospy
-
-#####On Rsync client machine
-ssh and Rsync
-
 ##Rsync Action Definition
 ```
 #Goal
