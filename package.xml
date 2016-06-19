@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
   <name>rsync_ros</name>
-  <version>0.9.0</version>
-  <description></description>
+  <version>0.0.0</version>
+  <description>A ROS actionlib server for Rsync</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
