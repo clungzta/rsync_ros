@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Software License Agreement (BSD License)
 #
 # Copyright (c) 2016, Alex McClung
@@ -30,10 +32,8 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-#!/usr/bin/env python
 import rospy
-import roslib
-roslib.load_manifest('rsync_actionlib')
+import roslib; roslib.load_manifest('rsync_ros')
 import actionlib
 import re
 from subprocess import Popen, PIPE
@@ -136,7 +136,7 @@ class RsyncActionServer:
 
 if __name__ == "__main__":
     try:
-        rospy.init_node('rsync_actionlib')
+        rospy.init_node('rsync_ros')
         RsyncActionServer(rospy.get_name())
         rospy.spin()
     except rospy.ROSInterruptException:

@@ -131,4 +131,4 @@ include_directories(
 # catkin_add_nosetests(test)
 
 ############################
-catkin_install_python(PROGRAMS src/server_node.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+catkin_install_python(PROGRAMS src/rsync_server_node.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

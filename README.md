@@ -17,6 +17,18 @@ The server passes all arguments listed in rsync_args to Rsync. See the available
 * actionlib
 * ROS
 
+##Example
+####Start the server
+`rosrun rsync_ros rsync_server.py`
+
+####Run the Client
+#####Local transfer example
+`rosrun rsync_ros rsync_client_example.py -avz ~/a_file.txt ~/a_copy_of_the_original_file.txt`
+
+#####Remote transfer example
+You will first need to set up ssh keys for the remote machine, see this [tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)
+`rosrun rsync_ros rsync_client_example.py -avz --partial ~/a_file.txt ssh_username@192.168.0.1:~/a_copy_of_the_original_file.txt`
+
 ##Rsync Action Definition
 ```
 #Goal
