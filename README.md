@@ -25,10 +25,13 @@ Have a look at scripts/rsync_client_example.py, it is a simple client based on t
 
 ####Run the Client
 #####Local transfer example
+Run
 `rosrun rsync_ros rsync_client_example.py -avz ~/a_file.txt ~/copied_file.txt`
 
 #####Remote transfer example
 You will first need to set up ssh keys for the remote machine, see this [tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)  
+
+Then, run
 `rosrun rsync_ros rsync_client_example.py -avzP ~/a_file.txt ssh_username@192.168.0.1:~/copied_file.txt`
 
 ##Rsync Action Definition
