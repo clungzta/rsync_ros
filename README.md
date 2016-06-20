@@ -18,7 +18,7 @@ A rsyncAction goal could be sent when a robot has reached a certain state (e.g. 
 * ROS
 
 ##Example
-Have a look at rsync_client_example.py, it is based off of actionlib_tutorials simple actionlib client.
+Have a look at scripts/rsync_client_example.py, it is a simple client based on the actionlib_tutorials [simple actionlib client](http://wiki.ros.org/actionlib_tutorials/Tutorials/Writing%20a%20Simple%20Action%20Client%20%28Python%29).
 
 ####Start the server
 `rosrun rsync_ros rsync_server.py`
