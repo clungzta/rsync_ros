@@ -39,7 +39,7 @@ Then, run
 ##Rysnc Arguments
 The server passes all arguments listed in rsync_args to Rsync, although not all of the Rsync arguments have been tested. If you're unfamiliar with RSync, have a look at the [manual](http://linux.die.net/man/1/rsync) to see the full list of arguments.
 
-*TL;DR* The `-avz` argument works well for copy operations and `-avz --delete-source-files` arguments for move operations. The `-p` argument (Continue Partial Transfer) is particuarly useful for dealing with the unreliable wireless connections encountered when working with robotics.
+*TL;DR* The `-avz` argument works well for copy operations and `-avz --delete-source-files` arguments for move operations. The `-p` argument (Partial Transfer) is particuarly useful for dealing with the unreliable wireless connections encountered when working with robotics.
 
 
 ##Rsync Action Definition
