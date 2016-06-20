@@ -35,6 +35,7 @@
 import rospy
 import roslib; roslib.load_manifest('rsync_ros')
 import actionlib
+import os
 from rsync import Rsync
 from rsync_ros.msg import RsyncAction, RsyncResult, RsyncFeedback
 
@@ -59,8 +60,20 @@ class RsyncActionServer:
 
         # check if preempt (cancel action) has been requested by the client
         if self.server.is_preempt_requested():
+            # Get the process id & try to terminate it gracefuly
+            pid = self.rsync.p.pid
+            self.rsync.p.terminate()
+
+            # Check if the process has really terminated & force kill if not.
+            try:
+                os.kill(pid, 0)
+                self.rsync.p.kill()
+                print "Forced kill"
+            except OSError, e:
+                print "Terminated gracefully"
+
+
             rospy.loginfo('%s: Preempted' % self._action_name)
-            self.rsync = None #Delete the instance of the Rsync class
             self.server.set_preempted() #TO-DO, fix logic error changing states upon preempt request
 
     def execute(self, goal):
