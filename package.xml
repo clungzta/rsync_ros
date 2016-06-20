@@ -2,7 +2,7 @@
 <package>
   <name>rsync_ros</name>
   <version>0.1.0</version>
-  <description>A ROS actionlib server for Rsync</description>
+  <description>An actionlib API for Rsync</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
