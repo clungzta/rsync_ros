@@ -1,8 +1,8 @@
 #rsync_ros
 ##Overview
-This package brings Rsync functionality to the ROS. With the intent of bringing file transfer (move, copy) and syncronisation operations in the form of an [actionlib](http://wiki.ros.org/actionlib) API. This API makes it convenient and more introspective to transfer a file from one machine to another using ROS.
+This package brings Rsync functionality to the ROS. With the intent of bringing file transfer (move, copy) and syncronisation operations in the form of an [actionlib](http://wiki.ros.org/actionlib) API. This API makes it convenient and to transfer a file from one machine to another using ROS, progress from the transfer is provided as action feedback.
 
-server_node.py is an ActionServer. The node calls Rsync through [subprocess Popen](https://docs.python.org/2/library/subprocess.html#popen-constructor) when it receives a ROS action goal. The action Server parses the current transfer percentage and data throughput from stdout, publishing the data as action feedback, returning a flag result upon completion of the transfer.
+server_node.py is an ActionServer. The node calls Rsync as a subprocess when it receives a ROS action goal. The node parses the current transfer percentage and data throughput from stdout and publishes the parsed data as action feedback. Once the transfer has completed the node returns a `sync_success` action result.
 
 ##Potential Use Cases
 An RsyncAction goal could be sent when a robot has reached a certain state (e.g. using [smach](http://wiki.ros.org/smach)) or when a sensor threshold has been reached. A a file (e.g. a logfile, map, image snapshot or bagfile) could be then transferred to a remote fileserver for storage.
@@ -37,7 +37,7 @@ Then, run
 `rosrun rsync_ros rsync_client_example.py -avzp ~/a_file.txt ssh_user@remote_host:~/file_dest.txt`
 
 ##Rysnc Arguments
-The server passes all arguments listed in rsync_args to Rsync, although not all of the Rsync arguments have been tested. If you're unfamiliar with RSync, have a read of the [manual](http://linux.die.net/man/1/rsync) to see the full list of arguments.
+The server passes all arguments listed in rsync_args to Rsync, although not all of the Rsync arguments have been tested. If you're unfamiliar with RSync, have a look at the [manual](http://linux.die.net/man/1/rsync) to see the full list of arguments.
 
 *TL;DR* The `-avz` argument works well for copy operations and `-avz --delete-source-files` arguments for move operations. The `-p` argument (Continue Partial Transfer) is particuarly useful for dealing with the unreliable wireless connections encountered when working with robotics.
 
