@@ -1,6 +1,6 @@
 #rsync_ros
 ##Overview
-This package brings Rsync functionality to the ROS. With the intent of bringing file transfer (move, copy) and syncronisation operations in the form of an [actionlib](http://wiki.ros.org/actionlib) interface. This interface makes it convenient and to transfer a file from one machine to another using ROS, progress from the transfer is published as action feedback.
+This package brings Rsync functionality to the ROS. With the intent of bringing file transfer (move, copy) and syncronisation operations in the form of an [actionlib](http://wiki.ros.org/actionlib) interface. The interface makes it convenient and to transfer a file from one machine to another using ROS, progress from the transfer is published as action feedback.
 
 server_node.py is an ActionServer. The node calls Rsync as a subprocess when it receives a ROS action goal. The node parses the current transfer percentage and data throughput from stdout and publishes the parsed data as action feedback. Once the transfer has completed the node returns a `sync_success` action result.
 
