@@ -19,8 +19,10 @@ See [http://wiki.ros.org/ROS/Patterns/Communication](http://wiki.ros.org/ROS/Pat
 * actionlib
 
 ##Example
+###Example Script
 scripts/rsync_client_example.py, a simple client based on the actionlib_tutorials [simple actionlib client](http://wiki.ros.org/actionlib_tutorials/Tutorials/Writing%20a%20Simple%20Action%20Client%20%28Python%29).
 
+###To Run Example
 ####Start the server
 `rosrun rsync_ros rsync_server.py`
 
