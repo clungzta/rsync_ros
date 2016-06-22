@@ -51,7 +51,7 @@ import sys
 rospy.init_node('rsync_client')
 
 source_path =  '~/a_file.txt'
-dest_path = SSH_USER@192.168.0.1:~/file_dest.txt
+dest_path = 'SSH_USER@192.168.0.1:~/file_dest.txt'
 
 # Create the SimpleActionClient, passing RsyncAction to the constructor.
 client = actionlib.SimpleActionClient('rsync_ros', rsync_ros.msg.RsyncAction)
