@@ -50,6 +50,9 @@ import sys
 
 rospy.init_node('rsync_client')
 
+source_path =  '~/a_file.txt'
+dest_path = SSH_USER@192.168.0.1:~/file_dest.txt
+
 # Create the SimpleActionClient, passing RsyncAction to the constructor.
 client = actionlib.SimpleActionClient('rsync_ros', rsync_ros.msg.RsyncAction)
 
@@ -58,7 +61,7 @@ client = actionlib.SimpleActionClient('rsync_ros', rsync_ros.msg.RsyncAction)
 client.wait_for_server()
 
 # Create a goal to send to the action server.
-goal = rsync_ros.msg.RsyncGoal(rsync_args=sys.argv[1:-2], source_path=sys.argv[-2], destination_path=sys.argv[-1])
+goal = rsync_ros.msg.RsyncGoal(rsync_args=['-avzp'], source_path=source_path, destination_path=dest_path)
 
 # Sends goal to the action server.
 client.send_goal(goal)
