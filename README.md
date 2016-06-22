@@ -1,4 +1,6 @@
-#rsync_ros
+#rsync_ros 
+[![Build Status](http://build.ros.org/buildStatus/icon?job=Jdev__rsync_ros__ubuntu_trusty_amd64&build=3)](http://build.ros.org/job/Jdev__rsync_ros__ubuntu_trusty_amd64/3/)
+
 ##Overview
 This package brings Rsync functionality to the ROS. With the intent of bringing file transfer (move, copy) and syncronisation operations in the form of an [actionlib](http://wiki.ros.org/actionlib) interface. The interface makes it convenient and to transfer a file from one machine to another using ROS. Progress from the transfer is published as action feedback.
 
