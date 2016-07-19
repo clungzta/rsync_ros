@@ -2,30 +2,20 @@
 [![Build Status](http://build.ros.org/buildStatus/icon?job=Jdev__rsync_ros__ubuntu_trusty_amd64&build=3)](http://build.ros.org/job/Jdev__rsync_ros__ubuntu_trusty_amd64/3/)
 
 ##Overview
-This package brings Rsync functionality to the ROS. With the intent of bringing file transfer (move, copy) and syncronisation operations in the form of an [actionlib](http://wiki.ros.org/actionlib) interface. The interface makes it convenient and to transfer a file from one machine to another using ROS. Progress from the transfer is published as action feedback.
-
-server_node.py is an ActionServer. The node calls Rsync as a subprocess when it receives a ROS action goal. The node parses the current transfer percentage and data throughput from stdout, then publishes this parsed data as action feedback. Once the transfer has completed the node returns a `sync_success` action result.
+This package brings Rsync operations (file transfer and syncronization) to ROS in the form of an [actionlib](http://wiki.ros.org/actionlib) interface. Making it convenient and more introspective to transfer files from one machine to another using ROS. Progress from transfers is published as action feedback.
 
 ##Potential Use Cases
-An RsyncAction goal could be sent when a robot has reached a certain state (e.g. using [smach](http://wiki.ros.org/smach)) or when a sensor threshold has been reached. A a file (e.g. a logfile or bagfile) could be then transferred to a remote fileserver for storage.
+An RsyncAction goal could be sent once a robot has reached a certain state. A file (e.g. a logfile or bagfile) could be then be transferred to a remote fileserver for storage.
 
 ##Why Rsync?
-[Rsync](http://linux.die.net/man/1/rsync) is a fast and versatile utllity for file transfer, it is widely used for backups and mirroring, as well as an improved copy command for everyday use. It can copy locally, to/from another host over any remote shell, it offers a large number of options that control every aspect of its behavior. It is famous for its delta-transfer algorithm, which reduces the amount of data sent over the network by sending only the differences between the source files and the existing files in the destination.
-
-##Why actionlib?
-See [http://wiki.ros.org/ROS/Patterns/Communication](http://wiki.ros.org/ROS/Patterns/Communication#Communication_via_Topics_vs_Services_vs_X)
-
-##Requirements
-* Rsync version 3.1.0+ (Developed and tested with this version, other versions are not currently supported due to the lack of the `--outbuf` flag.)
-* ssh is required if you are transferring to/from remote machines
-* actionlib
+[Rsync](http://linux.die.net/man/1/rsync) is a fast and versatile utllity for file transfer, it is widely used for backups and mirroring, as well as an improved copy command for everyday use. It can copy locally, to/from another host over any remote shell, offering a large number of options that control every aspect of its behavior. It is famous for its delta-transfer algorithm, which reduces the amount of data sent over the network by sending only the differences between the source files and the existing files in the destination.
 
 ##Usage
 
 ###To start the server
 `rosrun rsync_ros rsync_server_node.py`
 
-###CLI Actionlib Client Example
+####CLI Actionlib Client Example
 scripts/rsync_client_example.py, a simple client based on the actionlib_tutorials [simple actionlib client](http://wiki.ros.org/actionlib_tutorials/Tutorials/Writing%20a%20Simple%20Action%20Client%20%28Python%29).
 
 #####Local transfer
@@ -82,7 +72,6 @@ rospy.loginfo("Successful Transfer: {}".format(result.sync_success))  # An Rsync
 ```
 #Goal
 string[] rsync_args #List of Rsync command line arguments e.g. ['-avzh', '--partial']
-                    #see http://linux.die.net/man/1/rsync
                     
 string source_path #e.g. "/home/user/file_to_sync.txt"
 string destination_path #e.g. "ssh_username@192.168.0.1:/home/user/file_destination.txt"
