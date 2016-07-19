@@ -2,7 +2,7 @@
 [![Build Status](http://build.ros.org/buildStatus/icon?job=Jdev__rsync_ros__ubuntu_trusty_amd64&build=3)](http://build.ros.org/job/Jdev__rsync_ros__ubuntu_trusty_amd64/3/)
 
 ##Overview
-This package brings Rsync operations (file transfer and syncronization) to ROS in the form of an [actionlib](http://wiki.ros.org/actionlib) interface. Making it convenient and more introspective to transfer files from one machine to another using ROS. Progress from transfers is published as action feedback.
+This package brings Rsync operations (file transfer and syncronization) to ROS in the form of an [actionlib](http://wiki.ros.org/actionlib) interface. Making it convenient to transfer files from one machine to another using ROS. Progress from transfers is published as action feedback.
 
 ##Potential Use Cases
 An RsyncAction goal could be sent once a robot has reached a certain state. A file (e.g. a logfile or bagfile) could be then be transferred to a remote fileserver for storage.
